@@ -21,6 +21,7 @@
         <div class="header pd-10">
           <div class="header-left">
             <a href="#"><div class="user-top">
+              <img src="img/avatar_1.jpg" alt="">
             </div></a>
             <div class="label-left">
               <h4>Nome Utente</h4>
@@ -57,40 +58,16 @@
           <!-- CHAT-LIST -->
           <div class="chat-list">
             <ul>
-              <li>
+              <li v-for="(contact, index) in contacts">
                 <a href="#">
                   <div class="header">
                     <div class="header-left">
                       <div class="user-top">
+                        <img src="'img/avatar'+contact.avatar+'.jpg'"
+                        alt="">
                       </div>
                       <div class="label-left">
-                        <h4>Nome Utente</h4>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="header">
-                    <div class="header-left">
-                      <div class="user-top">
-                      </div>
-                      <div class="label-left">
-                        <h4>Nome Utente</h4>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="header">
-                    <div class="header-left">
-                      <div class="user-top">
-                      </div>
-                      <div class="label-left">
-                        <h4>Nome Utente</h4>
+                        <h4>{{contact.name}}</h4>
                       </div>
                     </div>
                   </div>
@@ -123,16 +100,17 @@
         </div>
         <div class="footer-chat">
 
-            <a href="#"><i class="far fa-smile"></i></a>
+            <a href="#"><i class="far fa-smile grey"></i></a>
 
             <input type="text" name="" value="" placeholder="Scrivi un messaggio">
 
-            <a href="#"><i class="fas fa-microphone"></i></a>
+            <a href="#"><i class="fas fa-microphone grey"></i></a>
 
         </div>
       </main>
 
     </div>
 
+  <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
