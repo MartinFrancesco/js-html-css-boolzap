@@ -28,7 +28,7 @@ h4 {
   font-weight: 400;
 }
 
-/* LAYOUT */
+/* GENERAL - LAYOUT */
 body {
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ body {
   min-width: 900px;
   height: 90vh;
 }
-
+/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -77,7 +77,6 @@ body {
   height: 40px;
   margin-right: 12px;
   border-radius: 50%;
-  background: red;
   overflow: hidden;
 }
 
@@ -94,6 +93,7 @@ body {
   height: 45px;
 }
 
+/* Aside sidebar */
 aside {
   display: flex;
   flex-direction: column;
@@ -102,6 +102,7 @@ aside {
   background: #eaeaea;
 }
 
+/* Main content*/
 .main-content {
   display: flex;
   flex-direction: column;
@@ -116,6 +117,7 @@ aside {
   padding: 0 20px;
 }
 
+/* SPECIFIC SECTIONS LAYOUT */
 /* ASIDE */
 aside .alert {
   display: flex;
@@ -170,17 +172,21 @@ aside .chat-list {
   background: #fff;
 }
 
-.chat-list ul li{
+.chat-list ul li {
   list-style: none;
   padding: 10px 20px;
   border-top: 1px solid #eaeaea;
+}
+
+.chat-list ul li:hover {
+  background: #eaeaea;
 }
 
 .chat-list ul li:first-child {
   border-top: none;
 }
 
-.chat-list ul li a{
+.chat-list ul li a {
   text-decoration: none;
   color: black;
 }

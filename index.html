@@ -18,10 +18,11 @@
     <div id="app" class="container">
       <!-- ASIDE -->
       <aside>
+        <!-- Header -->
         <div class="header pd-10">
           <div class="header-left">
             <a href="#"><div class="user-top">
-              <img src="img/avatar_1.jpg" alt="">
+              <img :src="'img/avatar'+user.avatar+'.jpg'">
             </div></a>
             <div class="label-left">
               <h4>Nome Utente</h4>
@@ -34,7 +35,7 @@
             <a href="#"><i class="fas fa-ellipsis-v"></i></a>
           </div>
         </div>
-
+          <!-- Alert Notifications -->
           <div class="alert pd-10">
             <div class="header">
               <div class="header-left">
@@ -48,31 +49,35 @@
               </div>
             </div>
           </div>
-          <!-- SEARCH -->
+          <!-- Search -->
           <div class="search">
             <div class="search-tool grey">
               <i class="fas fa-search"></i>
             </div>
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
           </div>
-          <!-- CHAT-LIST -->
+          <!-- Chat-List -->
           <div class="chat-list">
             <ul>
+
               <li v-for="(contact, index) in contacts">
                 <a href="#">
                   <div class="header">
                     <div class="header-left">
+
                       <div class="user-top">
-                        <img src="'img/avatar'+contact.avatar+'.jpg'"
-                        alt="">
+                        <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="">
                       </div>
+
                       <div class="label-left">
                         <h4>{{contact.name}}</h4>
                       </div>
+
                     </div>
                   </div>
                 </a>
               </li>
+
             </ul>
           </div>
       </aside>
@@ -80,8 +85,13 @@
       <main class="main-content">
         <div class="header pd-10">
           <div class="header-left">
-            <a href="#"><div class="user-top">
-            </div></a>
+
+            <a href="#">
+              <div class="user-top">
+                  <img :src="'img/avatar'+contacts[0].avatar+'.jpg'">
+              </div>
+            </a>
+
             <div class="label-left">
               <h4>Michele</h4>
               <small class="grey">Ultimo accesso oggi alle 10.35</small>
@@ -96,19 +106,22 @@
         </div>
 
         <div class="content-chat">
-
+          <!-- Chat... -->
         </div>
-        <div class="footer-chat">
 
-            <a href="#"><i class="far fa-smile grey"></i></a>
+        <!-- Footer -->
+        <div class="footer-chat">
+            <a href="#">
+              <i class="far fa-smile grey"></i>
+            </a>
 
             <input type="text" name="" value="" placeholder="Scrivi un messaggio">
 
-            <a href="#"><i class="fas fa-microphone grey"></i></a>
-
+            <a href="#">
+              <i class="fas fa-microphone grey"></i>
+            </a>
         </div>
       </main>
-
     </div>
 
   <script type="text/javascript" src="./js/main.js"></script>
