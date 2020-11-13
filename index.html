@@ -25,7 +25,7 @@
               <img :src="'img/avatar'+user.avatar+'.jpg'">
             </div></a>
             <div class="label-left">
-              <h4>Nome Utente</h4>
+              <h3>Nome Utente</h3>
             </div>
           </div>
 
@@ -52,7 +52,9 @@
           <!-- Search -->
           <div class="search">
             <div class="search-tool grey">
-              <i class="fas fa-search"></i>
+              <a href="#">
+                <i class="fas fa-search"></i>
+              </a>
             </div>
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
           </div>
@@ -60,7 +62,8 @@
           <div class="chat-list">
             <ul>
 
-              <li v-for="(contact, index) in contacts">
+              <li v-for="(contact, index, array) in contacts"
+                  @click="showChat(contact, index, array)">
                 <a href="#">
                   <div class="header">
                     <div class="header-left">
@@ -93,7 +96,7 @@
             </a>
 
             <div class="label-left">
-              <h4>Michele</h4>
+              <h3>Michele</h3>
               <small class="grey">Ultimo accesso oggi alle 10.35</small>
             </div>
           </div>
@@ -107,6 +110,20 @@
 
         <div class="content-chat">
           <!-- Chat... -->
+          <div v-for="(element) in newMessages" class="messages" :class="changeMessages">
+            <div class="message"
+            :class="changeMessage">
+              <p>{{element.message}}</p>
+              <label for="">{{element.date}}</label>
+            </div>
+          </div>
+
+          <div class="messages sent">
+            <div class="message sent-message">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <label for="">10/01/20 13.45:22</label>
+            </div>
+          </div>
         </div>
 
         <!-- Footer -->

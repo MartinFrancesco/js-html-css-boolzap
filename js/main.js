@@ -4,6 +4,12 @@
 var app = new Vue({
     el: '#app',
     data: {
+        // indice chat
+        indexChat: 0,
+        contactChat: '',
+        newMessages: [],
+        changeMessages: '',
+        changeMessage: '',
         // nostro account
         user: {
             name: 'Nome Utente',
@@ -96,5 +102,26 @@ var app = new Vue({
             },
         ]
     },
-    methods: {}
+    methods: {
+      showChat: function(contact, index, array) {
+
+        this.indexChat = index;
+        console.log(this.indexChat);
+
+        this.contactChat = contact;
+
+        for(var key in this.contactChat.messages) {
+          this.newMessages.push(this.contactChat.messages[key]);
+        }
+
+        this.changeMessages = (this.newMessages.status === 'sent') ? 'sent' : 'received';
+
+        this.changeMessage = (this.newMessages.status === 'sent') ? 'sent-message' : 'received-message';
+
+
+        // this.indexChat: 0;
+        // this.contactChat: '';
+        // this.newMessages: [];
+      },
+    }
 });
