@@ -23,11 +23,11 @@ i {
   color: #697376;
 }
 
-.received-message {
+div .received .message {
   background: #fff;
 }
 
-.sent-message {
+div .sent .message {
   background: #cdfab6;
 }
 
@@ -62,7 +62,7 @@ body {
 .header {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 15px;
 }
 
 .header .header-left, .header .header-right {
@@ -189,11 +189,11 @@ aside .chat-list {
 }
 
 .chat-list ul li:hover {
-  background: #eaeaea;
+  background: #ddd;
 }
 
-.chat-list ul li a:focus .header {
-  background: #ccc;
+.chat-list ul li a:focus .header, .active {
+  background: #eaeaea;
 }
 
 .chat-list ul li:first-child {
@@ -230,13 +230,13 @@ aside .chat-list {
 .content-chat .messages .message {
   position: relative;
   width: 40%;
-  margin: 10px;
+  margin: 5px;
   padding: 15px 20px;
   border-radius: 15px;
 }
 
 .content-chat .messages .message > p {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .content-chat .messages .message > label {

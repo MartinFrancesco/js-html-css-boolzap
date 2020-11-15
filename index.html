@@ -62,10 +62,12 @@
           <div class="chat-list">
             <ul>
 
-              <li v-for="(contact, index, array) in contacts"
-                  @click="showChat(contact, index, array)">
+              <li v-for="(contact, index) in contacts"
+                  @click="showChat(contact, index)">
                 <a href="#">
-                  <div class="header">
+                  <div class="header"
+                      :class=" index === indexChat ? 'active' : '' "
+                      >
                     <div class="header-left">
 
                       <div class="user-top">
@@ -91,12 +93,14 @@
 
             <a href="#">
               <div class="user-top">
-                  <img :src="'img/avatar'+contacts[0].avatar+'.jpg'">
+                  <img
+                  v-for="(contact, index) in contacts"
+                  :src="index === indexChat ? 'img/avatar'+contact.avatar+'.jpg' : '' ">
               </div>
             </a>
 
             <div class="label-left">
-              <h3>Michele</h3>
+              <h3>{{indexName}}</h3>
               <small class="grey">Ultimo accesso oggi alle 10.35</small>
             </div>
           </div>
@@ -110,18 +114,10 @@
 
         <div class="content-chat">
           <!-- Chat... -->
-          <div v-for="(element) in newMessages" class="messages" :class="changeMessages">
-            <div class="message"
-            :class="changeMessage">
+          <div v-for="(element, index) in contacts[indexChat].messages" class="messages" :class="element.status === 'sent' ? 'sent' : 'received' ">
+            <div class="message">
               <p>{{element.message}}</p>
               <label for="">{{element.date}}</label>
-            </div>
-          </div>
-
-          <div class="messages sent">
-            <div class="message sent-message">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <label for="">10/01/20 13.45:22</label>
             </div>
           </div>
         </div>
