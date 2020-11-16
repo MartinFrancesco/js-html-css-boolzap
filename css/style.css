@@ -119,6 +119,20 @@ aside {
   background: #eaeaea;
 }
 
+.content-chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-chat .main-chat {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  overflow: auto;
+}
+
 .footer-chat {
   display: flex;
   justify-content: space-around;
@@ -209,10 +223,8 @@ aside .chat-list {
 .main-content .content-chat {
   display: flex;
   flex-direction: column;
-  padding: 40px;
   flex-grow: 1;
   background-image: url(../img/mine.jpg);
-  overflow: auto;
 }
 
 .main-content .footer-chat {
@@ -225,7 +237,7 @@ aside .chat-list {
 }
 
 /* Chat */
-.main-content .content-chat .messages .message {
+.main-content .content-chat .main-chat .messages .message {
   position: relative;
   width: 40%;
   margin: 5px;
@@ -233,11 +245,11 @@ aside .chat-list {
   border-radius: 15px;
 }
 
-.content-chat .messages .message > p {
+.main-chat .messages .message > p {
   margin-bottom: 8px;
 }
 
-.content-chat .messages .message > label {
+.main-chat .messages .message > label {
   position: absolute;
   bottom: 6px;
   right: 9px;
@@ -245,7 +257,7 @@ aside .chat-list {
   color: #b5b9bb;
 }
 
-.content-chat .messages {
+.main-chat .messages {
   display: flex;
   width: 100%;
 }
@@ -261,6 +273,7 @@ aside .chat-list {
 }
 
 .main-content .footer-chat input {
+  position: relative;
   font-size: 16px;
   width: 80%;
   padding: 12px;

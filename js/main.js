@@ -109,6 +109,7 @@ var app = new Vue({
 
         this.indexChat = index;
         console.log(this.indexChat);
+        this.indexName = this.contact.name;
 
         if (this.indexChat === 0) {
           this.indexName = this.contacts[0].name;

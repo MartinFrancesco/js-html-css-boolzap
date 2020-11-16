@@ -113,12 +113,14 @@
         </div>
 
         <div class="content-chat">
-          <!-- Chat... -->
-          <div v-for="(element, index) in contacts[indexChat].messages" class="messages" :class="element.status === 'sent' ? 'sent' : 'received' ">
-            <div class="message">
-              <p>{{element.message}}</p>
-              <label for="">{{element.date}}</label>
-            </div>
+          <div class="main-chat">
+            <!-- Chat... -->
+            <div v-for="(element, index) in contacts[indexChat].messages" class="messages" :class="element.status === 'sent' ? 'sent' : 'received' ">
+              <div class="message">
+                <p>{{element.message}}</p>
+                <label for="">{{element.date}}</label>
+              </div>
+            </div>          
           </div>
         </div>
 
