@@ -207,12 +207,16 @@ aside .chat-list {
 
 /* MAIN */
 .main-content .content-chat {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
   flex-grow: 1;
   background-image: url(../img/mine.jpg);
+  overflow: auto;
 }
 
 .main-content .footer-chat {
-  height: 8%;
+  height: 80px;
   background: #f4eeea;
 }
 
@@ -221,13 +225,7 @@ aside .chat-list {
 }
 
 /* Chat */
-.main-content .content-chat {
-  display: flex;
-  flex-direction: column;
-  padding: 40px;
-}
-
-.content-chat .messages .message {
+.main-content .content-chat .messages .message {
   position: relative;
   width: 40%;
   margin: 5px;

@@ -9,6 +9,7 @@ var app = new Vue({
         active: 'active',
         indexName: 'Michele',
         newMessage: '',
+        reply: 'ok!',
         // nostro account
         user: {
             name: 'Nome Utente',
@@ -118,12 +119,20 @@ var app = new Vue({
 
         if (this.newMessage !== '') {
           this.contacts[this.indexChat].messages.push({
-            date: '',
+            date: dayjs().format('D/MM/YYYY HH:mm:ss'),
             message: this.newMessage.trim(),
             status: 'sent',
           });
           this.newMessage = '';
-        }
-      }
+
+            setTimeout(() => {
+              this.contacts[this.indexChat].messages.push({
+                date: dayjs().format('D/MM/YYYY HH:mm:ss'),
+                message: this.reply,
+                status: 'received',
+              });
+            }, 1000);
+        };
+      },
     }
 });
