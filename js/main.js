@@ -8,6 +8,7 @@ var app = new Vue({
         indexChat: 0,
         active: 'active',
         indexName: 'Michele',
+        newMessage: '',
         // nostro account
         user: {
             name: 'Nome Utente',
@@ -111,6 +112,18 @@ var app = new Vue({
         } else {
           this.indexName = contact.name;
         };
+
       },
+      pushMessage() {
+
+        if (this.newMessage !== '') {
+          this.contacts[this.indexChat].messages.push({
+            date: '',
+            message: this.newMessage.trim(),
+            status: 'sent',
+          });
+          this.newMessage = '';
+        }
+      }
     }
 });
