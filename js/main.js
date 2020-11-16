@@ -10,6 +10,8 @@ var app = new Vue({
         indexName: 'Michele',
         newMessage: '',
         reply: 'ok!',
+        time: '',
+        setTime: dayjs().subtract(2, 'h').format(' HH:mm:ss'),
         // nostro account
         user: {
             name: 'Nome Utente',
@@ -126,6 +128,12 @@ var app = new Vue({
           this.newMessage = '';
 
             setTimeout(() => {
+              this.time = dayjs().format(' HH:mm:ss');
+
+              if(this.time === dayjs().format(' HH:mm:ss')) {
+                this.setTime = '';
+              };
+
               this.contacts[this.indexChat].messages.push({
                 date: dayjs().format('D/MM/YYYY HH:mm:ss'),
                 message: this.reply,
