@@ -12,6 +12,7 @@ var app = new Vue({
         reply: 'ok!',
         time: '',
         setTime: dayjs().subtract(2, 'h').format(' HH:mm:ss'),
+        research: '',
         // nostro account
         user: {
             name: 'Nome Utente',
@@ -109,7 +110,7 @@ var app = new Vue({
 
         this.indexChat = index;
         console.log(this.indexChat);
-        this.indexName = this.contact.name;
+        this.indexName = contact.name;
 
         if (this.indexChat === 0) {
           this.indexName = this.contacts[0].name;
@@ -122,7 +123,7 @@ var app = new Vue({
 
         if (this.newMessage !== '') {
           this.contacts[this.indexChat].messages.push({
-            date: dayjs().format('D/MM/YYYY HH:mm:ss'),
+            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
             message: this.newMessage.trim(),
             status: 'sent',
           });
@@ -136,12 +137,16 @@ var app = new Vue({
               };
 
               this.contacts[this.indexChat].messages.push({
-                date: dayjs().format('D/MM/YYYY HH:mm:ss'),
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 message: this.reply,
                 status: 'received',
               });
             }, 1000);
         };
+      },
+      capitalizeFirstLetter() {
+
+         this.research.charAt(0).toUpperCase() + this.research.slice(1);
       },
     }
 });
