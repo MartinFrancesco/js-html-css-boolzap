@@ -281,3 +281,7 @@ aside .chat-list {
   border: none;
   outline: none;
 }
+
+.hide {
+  display: none;
+}

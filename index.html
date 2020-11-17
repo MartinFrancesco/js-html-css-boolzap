@@ -19,7 +19,8 @@
       <!-- ASIDE -->
       <aside>
         <!-- Header -->
-        <div class="header pd-10">
+        <div class="header pd-10"
+             :class="">
           <div class="header-left">
             <a href="#"><div class="user-top">
               <img :src="'img/avatar'+user.avatar+'.jpg'">
@@ -36,7 +37,7 @@
           </div>
         </div>
           <!-- Alert Notifications -->
-          <div class="alert pd-10">
+          <div v-show="showMe" class="alert pd-10">
             <div class="header">
               <div class="header-left">
                 <div class="user-top">
@@ -44,7 +45,7 @@
                 </div>
                 <div class="label-left">
                   <h4>Ricevi notifiche di nuovi messaggi</h4>
-                  <small><a class="grey" href="#">Attiva notifiche desktop</a></small>
+                  <small><a @click="showMe = !showMe" class="grey" href="#">Attiva notifiche desktop</a></small>
                 </div>
               </div>
             </div>

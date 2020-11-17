@@ -13,6 +13,7 @@ var app = new Vue({
         time: '',
         setTime: dayjs().subtract(2, 'h').format(' HH:mm:ss'),
         research: '',
+        showMe: true,
         // nostro account
         user: {
             name: 'Nome Utente',
