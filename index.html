@@ -57,6 +57,7 @@
               </a>
             </div>
             <input v-model="research"
+                   @keyup="searchContact"
                    type="text" name="" value="" placeholder="Cerca o inizia una nuova chat"
             >
           </div>
@@ -66,7 +67,7 @@
 
               <li v-for="(contact, index) in contacts"
                   @click="showChat(contact, index)"
-                  :class="contact.name.includes(research) ? '' : 'false' "
+                  v-show="contact.visible"
                   >
                 <a href="#">
                   <div class="header"

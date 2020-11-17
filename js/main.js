@@ -144,9 +144,16 @@ var app = new Vue({
             }, 1000);
         };
       },
-      capitalizeFirstLetter() {
+      searchContact() {
 
-         this.research.charAt(0).toUpperCase() + this.research.slice(1);
+         for (let i = 0; i < this.contacts.length; i++) {
+
+           if(this.contacts[i].name.toLowerCase().includes(this.research.toLowerCase())) {
+             this.contacts[i].visible = true;
+           } else {
+             this.contacts[i].visible = false;
+           }
+         }
       },
     }
 });
