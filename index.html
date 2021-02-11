@@ -16,11 +16,12 @@
   <body>
 
     <div id="app" class="container">
+
+      <div class="back-black" :class="{'darkClass': isDark}"></div>
       <!-- ASIDE -->
-      <aside>
+      <aside :class="{'darkClass': isDark}">
         <!-- Header -->
-        <div class="header pd-10"
-             :class="">
+        <div class="header pd-10">
           <div class="header-left">
             <a href="#"><div class="user-top">
               <img :src="'img/avatar'+user.avatar+'.jpg'">
@@ -31,11 +32,41 @@
           </div>
 
           <div class="header-right">
-            <a href="#"><i class="fas fa-circle-notch"></i></a>
+            <a @click="dark" href="#"><i class="fas fa-circle-notch"></i></a>
             <a href="#"><i class="fas fa-comment-alt"></i></a>
-            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+            <a @click="showMenu = !showMenu" href="#" class="options"><i class="fas fa-ellipsis-v"></i></a>
           </div>
+
+          <!-- Alert Options MENU -->
+          <transition name="slide-down-fade">
+            <div v-if="showMenu" class="option-menu" :class="{'darkClass': isDark}">
+              <ul>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Nuovo Gruppo</a>
+                </li>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Crea una stanza</a>
+                </li>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Profilo</a>
+                </li>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Archiviate</a>
+                </li>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Importanti</a>
+                </li>
+                <li @click="showImpo = !showImpo" :class="{'darkClass': isDark}">
+                  <a href="#" class="options">Impostazioni</a>
+                </li>
+                <li :class="{'darkClass': isDark}">
+                  <a href="">Disconnetti</a>
+                </li>
+              </ul>
+            </div>
+          </transition>
         </div>
+
           <!-- Alert Notifications -->
           <div v-show="showMe" class="alert pd-10">
             <div class="header">
@@ -43,7 +74,7 @@
                 <div class="user-top">
                   <i class="fas fa-bell-slash"></i>
                 </div>
-                <div class="label-left">
+                <div class="label-left" :class="{'darkClass': isDark}">
                   <h4>Ricevi notifiche di nuovi messaggi</h4>
                   <small><a @click="showMe = !showMe" class="grey" href="#">Attiva notifiche desktop</a></small>
                 </div>
@@ -51,27 +82,28 @@
             </div>
           </div>
           <!-- Search -->
-          <div class="search">
-            <div class="search-tool grey">
+          <div class="search" :class="{'darkClass': isDark}">
+            <div class="search-tool grey" :class="{'darkClass': isDark}">
               <a href="#">
                 <i class="fas fa-search"></i>
               </a>
             </div>
-            <input v-model="research"
+            <input v-model="research" :class="{'darkClass': isDark}"
                    @keyup="searchContact"
                    type="text" name="" value="" placeholder="Cerca o inizia una nuova chat"
             >
           </div>
           <!-- Chat-List -->
-          <div class="chat-list">
+          <div class="chat-list" :class="{'darkClass': isDark}">
             <ul>
 
               <li v-for="(contact, index) in contacts"
                   @click="showChat(contact, index)"
                   v-show="contact.visible"
+                  :class="{'darkClass': isDark}"
                   >
                 <a href="#">
-                  <div class="header"
+                  <div class="header" :class="{'darkClass': isDark}"
                       :class=" index === indexChat ? 'active' : '' "
                       >
                     <div class="header-left">
@@ -80,7 +112,7 @@
                         <img :src="'img/avatar'+contact.avatar+'.jpg'" alt="">
                       </div>
 
-                      <div class="label-left">
+                      <div class="label-left" :class="{'darkClass': isDark}">
                         <h4>{{contact.name}}</h4>
                       </div>
 
@@ -91,10 +123,66 @@
 
             </ul>
           </div>
+
+        <!-- Impostazioni ASIDE -->
+        <transition name="slide-fade">
+          <div v-if="showImpo" class="impostazioni" :class="{'darkClass': isDark}" >
+            <div class="cover-menu" :class="{'darkClass': isDark}">
+              <a @click="showImpo = !showImpo;showMenu = !showMenu" href="#"><i class="fas fa-arrow-left"></i></a>
+              <h2>Impostazioni</h2>
+            </div>
+            <!-- Impostazioni-Menu -->
+            <ul>
+              <li :class="{'darkClass': isDark}">
+                  <div class="header-left">
+
+                      <div class="user-top">
+                        <img :src="'img/avatar'+user.avatar+'.jpg'">
+                      </div>
+                      <div class="label-left">
+                        <h3>Nome Utente</h3>
+                        <h4 class="grey">Stato</h4>
+                      </div>
+
+                  </div>
+              </li>
+              <li :class="{'darkClass': isDark}">
+                <a href="" :class="{'darkClass': isDark}">
+                  <i class="fas fa-bell"></i>
+                  Notifiche
+                </a>
+              </li>
+              <li @click="showTheme = !showTheme" :class="{'darkClass': isDark}">
+                <a href="#" class="options" :class="{'darkClass': isDark}">
+                  <i class="fas fa-adjust"></i>Tema
+                </a>
+              </li>
+              <li :class="{'darkClass': isDark}">
+                <a href="" :class="{'darkClass': isDark}">
+                  <i class="far fa-image"></i>
+                  Sfondi chat
+                </a>
+              </li>
+              <li :class="{'darkClass': isDark}">
+                <a href="" :class="{'darkClass': isDark}">
+                  <i class="fas fa-ban"></i>
+                  Bloccati
+                </a>
+              </li>
+              <li :class="{'darkClass': isDark}">
+                <a href="" :class="{'darkClass': isDark}">
+                  <i class="fas fa-question-circle"></i>
+                  Aiuto
+                </a>
+              </li>
+            </ul>
+          </div>
+        </transition>
       </aside>
+
       <!-- MAIN CHAT -->
-      <main class="main-content">
-        <div class="header pd-10">
+      <main class="main-content" :class="{'darkClass': isDark}">
+        <div class="header pd-10" :class="{'darkClass': isDark}">
           <div class="header-left">
 
             <a href="#">
@@ -105,7 +193,7 @@
               </div>
             </a>
 
-            <div class="label-left">
+            <div class="label-left" :class="{'darkClass': isDark}">
               <h3>{{indexName}}</h3>
               <small class="grey">Ultimo accesso oggi alle {{setTime}} {{time}}</small>
             </div>
@@ -118,11 +206,11 @@
           </div>
         </div>
 
-        <div class="content-chat">
+        <div class="content-chat" :class="{'darkClass': isDark}">
           <div class="main-chat">
             <!-- Chat... -->
-            <div v-for="(element, index) in contacts[indexChat].messages" class="messages" :class="element.status === 'sent' ? 'sent' : 'received' ">
-              <div class="message">
+            <div v-for="(element, index) in contacts[indexChat].messages" class="messages" :class="element.status === 'sent' ? 'sent' : 'received' " >
+              <div class="message" :class="{'darkClass': isDark}">
                 <p>{{element.message}}</p>
                 <label for="">{{element.date}}</label>
               </div>
@@ -131,19 +219,49 @@
         </div>
 
         <!-- Footer -->
-        <div class="footer-chat">
+        <div class="footer-chat" :class="{'darkClass': isDark}">
             <a href="#">
-              <i class="far fa-smile grey"></i>
+              <i class="far fa-smile"></i>
             </a>
 
-            <input @keyup.enter= "pushMessage" v-model="newMessage" type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input :class="{'darkClass': isDark}" @keyup.enter= "pushMessage" v-model="newMessage" type="text" name="" value="" placeholder="Scrivi un messaggio">
 
             <a href="#">
-              <i class="fas fa-microphone grey"></i>
+              <i class="fas fa-microphone"></i>
             </a>
         </div>
+
       </main>
+      <!-- THEME MENU DISPLAY -->
+      <div v-show="showTheme" class="tema">
+        <div class="chose-theme">
+          <h2>Scegli tema</h2>
+
+          <!-- Tema: CHIARO -->
+          <input type="radio" id="chiaro" name="chiaro" :value="false" v-model="isDark"
+                 onclick= "document.getElementById('scuro').checked = false"
+          >
+          <label for="vehicle1"> Chiaro</label><br>
+          <!-- Tema: SCURO -->
+          <input type="radio" id="scuro" name="scuro" :value="true" v-model="isDark"
+                 onclick= "document.getElementById('chiaro').checked = false"
+          >
+          <label for="vehicle2"> Scuro<br>
+          <!-- Tema: PREDEFINITO -->
+          <input type="radio" id="predefinito" name="predefinito" value="false">
+          <label for="vehicle3"> Predefinito</label><br> 
+
+          <div class="confirm">
+            <div class="btn-null" @click="showTheme = !showTheme;isDark = !isDark">Annulla</div>
+            <div class="btn-ok" @click="showTheme = !showTheme">
+              <a href="#" class="options"></i>Ok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
 
 <!-- DAYJs -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js">
